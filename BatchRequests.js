@@ -156,9 +156,9 @@ function getBatchPath(name, version) {
       if (!check) {
         throw new Error("Valid response value is not returned.");
       }
-      const delimeter = check[0];
+      const delimiter = check[0];
       var regex, temp;
-      temp = d_.split(delimeter);
+      temp = d_.split(delimiter);
       regex = /{.+}/gs;
       if (!d_.match(regex)) {
         return d_;
