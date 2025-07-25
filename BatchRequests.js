@@ -152,9 +152,14 @@ function getBatchPath(name, version) {
     };
 
     parser = function(d_) {
+      check = d_.match(/\r?\n--.*/);
+      if (!check) {
+        throw new Error("Valid response value is not returned.");
+      }
+      const delimeter = check[0];
       var regex, temp;
-      temp = d_.split("--batch");
-      regex = /{[\S\s]+}/g;
+      temp = d_.split(delimeter);
+      regex = /{.+}/gs;
       if (!d_.match(regex)) {
         return d_;
       }
